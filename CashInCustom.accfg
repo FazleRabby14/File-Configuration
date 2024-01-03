@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassConfiguratorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Section>
+    <Class ID="BasicDeviceStatusFormatter" Name="NCR.APTRA.NDC.CashInJrnlSrv.BasicStatusFormatter" Assembly="NCR.APTRA.NDC.CashInJrnlSrv.dll">
+      <Interface>
+        <Property Name="TCode1Timeout" Value="CUSTOMER TIMEOUT" />
+        <Property Name="TCode1AutoCancelled" Value="" />
+        <Property Name="NumberOfColumns" Value="22" />
+      </Interface>
+    </Class>
+    <Class ID="EnhancedDeviceStatusFormatter" Name="NCR.APTRA.NDC.CashInJrnlSrv.EnhancedStatusFormatter" Assembly="NCR.APTRA.NDC.CashInJrnlSrv.dll">
+      <Interface>
+        <Property Name="TCode1Timeout" Value="CUSTOMER TIMEOUT" />
+        <Property Name="TCode1AutoCancelled" Value="" />
+        <Property Name="JournalGroupDigit" Value="false" />
+        <Property Name="TotalString" Value="TOTAL" />
+      </Interface>
+    </Class>
+    <Class ID="BasicCashInFormatter" Name="NCR.APTRA.NDC.CashInFormattingCore.BasicCashInFormatter" Assembly="NCR.APTRA.NDC.CashInFormattingCore.dll">
+      <Interface>
+        <Property Name="DenominationNames" Value="DenominationNamesMapping" IsArray="true" />
+        <Property Name="NumberOfColumns" Value="22" />
+      </Interface>
+    </Class>
+    <Class ID="EnhancedCashInFormatter" Name="NCR.APTRA.NDC.CashInFormattingCore.EnhancedCashInFormatter" Assembly="NCR.APTRA.NDC.CashInFormattingCore.dll">
+      <Interface>
+        <Property Name="IncludeGroupDigit" Value="false" />
+        <Property Name="TotalString" Value="TOTAL" />
+        <Property Name="CurrencyNames" Value="CurrencyNamesMapping" IsArray="true" />
+        <Property Name="TemplateForReportLine" Value="{0,3}{1,6} X {2,3} = {3,8}" />
+        <Property Name="TemplateForTotalLine" Value=" {0} {1} = {2,8}" />
+      </Interface>
+    </Class>
+    <Class ID="CashInJournalService" Name="NCR.APTRA.NDC.CashInJrnlSrv.CashInJrnlSrv" Assembly="NCR.APTRA.NDC.CashInJrnlSrv.dll">
+      <Interface>
+        <Property Name="Cat2H" Value="CAT2:" />
+        <Property Name="Cat3H" Value="CAT3:" />
+        <Property Name="ReportZeroCounts" Value="true" />
+        <Property Name="DeviceStatusFormatter" Value="BasicDeviceStatusFormatter" />
+        <Property Name="UnknownText" Value="UNKNOWN" />
+      </Interface>
+    </Class>
+    <Class ID="CashInStatusHandler" Name="NCR.APTRA.NDC.CashInStatusHandling.CashInStatusHandler" Assembly="NCR.APTRA.NDC.CashInStatusHandling.dll">
+      <Interface>
+        <Property Name="VendorInfoMapper" Value="ICashInVendorInfo" />
+        <Property Name="MStatusMapper" Value="IMStatusMapper" />
+        <Property Name="JournalCustomerData" Value="DoNotPrint" />
+        <Property Name="HandleSuspendAsFatal" Value="false" />
+        <Property Name="ReportTRequestCumulativeCounts" Value="false" />
+        <Property Name="P6DetectedUnsol" Value="SendWithoutCardData" />
+        <Property Name="GroupMultipleRevisionsInTRequestCounts" Value="false" />
+        <Property Name="CombinedDispenserNumber" Value="1" />
+        <Property Name="SuppressMessages" Value="false" />
+        <Property Name="ReportExtendedHardwareConfiguration" Value="false" />
+        <Property Name="ReportAutoErrorRecoveryUnsol" Value="false" />
+        <Property Name="CountsPerOperationInP6Unsols" Value="false" />
+        <Property Name="UpdateAmountEntryField" Value="0:0" />
+      </Interface>
+    </Class>
+    <Class ID="StartEndExchanger" Name="NCR.APTRA.NDC.CashInStatusHandling.StartEndExchanger" Assembly="NCR.APTRA.NDC.CashInStatusHandling.dll">
+      <Interface>
+        <Property Name="PassCashUnitsInStartExchange" Value="false" />
+      </Interface>
+    </Class>
+    <Class ID="SerialNumberEJConfig" Name="NCR.APTRA.NDC.SerialNumberAndSignatureFormatter.SerialNumberJournalConfig" Assembly="NCR.APTRA.NDC.SerialNumberAndSignatureFormatter.dll">
+      <Interface>
+        <Property Name="CAT4SerialNumberInfoHeader" Value="CAT4 SERIAL NUMBERS:" />
+        <Property Name="CAT4SerialNumberLayout" Value="{SerialNumber}" />
+        <Property Name="PrintCAT4SerialNumbers" Value="True" />
+        <Property Name="CAT3SerialNumberInfoHeader" Value="CAT3 SERIAL NUMBERS:" />
+        <Property Name="CAT3SerialNumberLayout" Value="{SerialNumber}" />
+        <Property Name="PrintCAT3SerialNumbers" Value="True" />
+        <Property Name="CAT2SerialNumberInfoHeader" Value="CAT2 SERIAL NUMBERS:" />
+        <Property Name="CAT2SerialNumberLayout" Value="{SerialNumber}" />
+        <Property Name="PrintCAT2SerialNumbers" Value="True" />
+        <Property Name="PrintCAT2FailedSerialNumberCount" Value="True" />
+        <Property Name="PrintCAT3FailedSerialNumberCount" Value="True" />
+        <Property Name="PrintCAT4FailedSerialNumberCount" Value="True" />
+        <Property Name="CurrencyNames" Value="CurrencyNamesMapping" IsArray="true" />
+        <Property Name="NoteLocationHeader" Value="LOCATION - COUNT:" />
+        <Property Name="ImgFileNameHeader" Value="FILE NAMES:" />
+      </Interface>
+    </Class>
+    <Class ID="SerialNumberReceiptConfig" Name="NCR.APTRA.NDC.SerialNumberAndSignatureFormatter.SerialNumberReceiptConfig" Assembly="NCR.APTRA.NDC.SerialNumberAndSignatureFormatter.dll">
+      <Interface>
+        <Property Name="CAT2SerialNumberLayout" Value="{SerialNumber}" />
+        <Property Name="CAT3SerialNumberLayout" Value="{SerialNumber}" />
+        <Property Name="CAT4SerialNumberLayout" Value="{SerialNumber}" />
+        <Property Name="PrintCAT2SerialNumbers" Value="True" />
+        <Property Name="PrintCAT3SerialNumbers" Value="True" />
+        <Property Name="PrintCAT4SerialNumbers" Value="True" />
+        <Property Name="PrintCAT2FailedSerialNumberCount" Value="True" />
+        <Property Name="PrintCAT3FailedSerialNumberCount" Value="True" />
+        <Property Name="PrintCAT4FailedSerialNumberCount" Value="True" />
+        <Property Name="SerialNumberSeparatorOnReceipt" Value="," />
+        <Property Name="CurrencyNames" Value="CurrencyNamesMapping" IsArray="true" />
+        <Property Name="SNRReceiptFlowPoints" Value="{Deposit}{OfflineDeposit}{Retract}{Refund}{LeaveNotesAtEscrow}" />
+      </Interface>
+    </Class>
+    <Class ID="IMStatusMapper" Name="NCR.APTRA.NDC.CashInStatusHandling.NCRMStatusMapper" Assembly="NCR.APTRA.NDC.CashInStatusHandling.dll">
+      <Interface>
+        <Property Name="MStatusType" Value="Default" />
+      </Interface>
+    </Class>
+    <Class ID="CassetteMapper" Name="NCR.APTRA.NDC.CashAcceptService.GBxxCassetteMapper" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface />
+    </Class>
+    <Class ID="CassetteMapperNCRBRM" Name="NCR.APTRA.NDC.CashAcceptService.BRMCassetteMapper" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface>
+        <Property Name="CassetteFixedMappings" Value="BRMCassetteFixedMappings" IsArray="true" />
+      </Interface>
+    </Class>
+    <Class ID="CassetteMapperNCRSR" Name="NCR.APTRA.NDC.CashAcceptService.BRMCassetteMapper" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface />
+    </Class>
+    <Class ID="CassetteMapperNCRSRSplit" Name="NCR.APTRA.NDC.CashAcceptService.BRMCassetteMapper" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface />
+    </Class>
+    <Class ID="CassetteMapperHyosungRecycler" Name="NCR.APTRA.NDC.CashAcceptService.GenericCassetteMapper" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface>
+        <Property Name="PhysicalPositionMap" Value="CassetteA-Cassette1|CassetteB-Cassette2|CassetteC-Cassette3|CassetteD-Cassette4|CassetteE-Cassette5|RetractCassette-Retract" />
+      </Interface>
+    </Class>
+    <Class ID="CassetteMapperOKIRecycler" Name="NCR.APTRA.NDC.CashAcceptService.GenericCassetteMapper" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface>
+        <Property Name="PhysicalPositionMap" Value="Cassette1-Cassette1|Cassette2-Cassette2|Cassette3-Cassette3|Cassette4-Cassette4|Cassette5-Cassette5|Cassette7-Retract" />
+      </Interface>
+    </Class>
+    <Class ID="DynamicOverspill" Name="NCR.APTRA.NDC.CashInStatusHandling.DynamicOverspill" Assembly="NCR.APTRA.NDC.CashInStatusHandling.dll">
+      <Interface />
+    </Class>
+    <Class ID="CashAcceptStateFlowConfig" Name="NCR.APTRA.NDC.CashInFlows.CashAcceptStateFlowConfig" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface>
+        <Property Name="RefuseReasonMask" Value="Display Text {0:000}" />
+        <Property Name="DefaultDirectDepositLimit" Value="700" />
+        <Property Name="CashInAutoEnabled" Value="False" />
+        <Property Name="DisplayConfirmationScreenOnError" Value="False" />
+        <Property Name="RejectedBunchLimit" Value="0" />
+        <Property Name="AcceptedBunchLimit" Value="0" />
+        <Property Name="DisplayRemoveRefusedNotesScreenOnPresentedEvent" Value="False" />
+      </Interface>
+    </Class>
+    <Class ID="CashInCloseFlowConfig" Name="NCR.APTRA.NDC.CashInFlows.CashInCloseFlowConfig" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface>
+        <Property Name="WaitScreen" Value="C20" />
+        <Property Name="RetainDestination" Value="Retract" />
+      </Interface>
+    </Class>
+    <Class ID="CashDepositHandlingStateFlowConfig" Name="NCR.APTRA.NDC.CashInFlows.CashDepositHandlingStateFlowConfig" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface>
+        <Property Name="CountersFormatter" Value="EnhancedCashInFormatter" IsLink="true" />
+      </Interface>
+    </Class>
+    <Class ID="CashDepositHandlingStateFlow" Name="NCR.APTRA.NDC.CashInFlows.CashDepositHandlingStateFlow" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface>
+        <Property Name="ReceiptService" Value="NDCReceiptService" IsLink="true" />
+      </Interface>
+    </Class>
+    <Class ID="ECB6DialogConfig" Name="NCR.APTRA.NDC.CashInFlows.ECB6DialogConfig" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface />
+    </Class>
+    <Class ID="ConfirmationScreenDialogConfig" Name="NCR.APTRA.NDC.CashInFlows.ConfirmationScreenDialogConfig" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface />
+    </Class>
+    <Class ID="DefaultConfirmationScreenDataFormatter" Name="NCR.APTRA.NDC.CashInFlows.ConfirmationScreenDataFormatter" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface>
+        <Property Name="FormatterID" Value="0" />
+        <Property Name="IncludeAllAcceptableDenominations" Value="false" />
+        <Property Name="ReportHeader" Value="|ESC|(v|ESC|[20m|ESC|[80m|SI|G@" />
+        <Property Name="TemplateForTotalRetainedLine" Value="COUNTERFEIT NOTES RETAINED = {0,3}" />
+        <Property Name="TemplateForReportLine" Value="          {1,3} {0,4} X{2,3} ={3,6}" />
+        <Property Name="TemplateForTotalLine" Value="                    TOTAL  ={1,6} {0,3}" />
+        <Property Name="ReportFooter" Value="|ESC|(1" />
+        <Property Name="NumberOfAvailableLines" Value="8" />
+        <Property Name="TemplateForSummaryLine" Value="                     {0,3} ={1,6}" />
+      </Interface>
+    </Class>
+    <Class ID="DefaultECB6ScreenDataFormatter" Name="NCR.APTRA.NDC.CashInFlows.ECB6ScreenDataFormatter" Assembly="NCR.APTRA.NDC.CashInFlows.dll">
+      <Interface>
+        <Property Name="FormatterID" Value="0" />
+      </Interface>
+    </Class>
+    <Class ID="NDCCashAcceptService" Name="NCR.APTRA.NDC.CashAcceptService.NDCCashAcceptService" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface>
+        <Property Name="AudioVolume" Value="750" />
+        <Property Name="NoteTypesMapping" Value="XMLFile" />
+        <Property Name="ReportFatalWhenNoAllInCassettesAvailable" Value="false" />
+        <Property Name="LogAndStoreValidatedNoteCounts" Value="false" />
+        <Property Name="TruncateTrailingZerosInDenominations" Value="false" />
+      </Interface>
+    </Class>
+    <Class ID="ECB6CashAcceptService" Name="NCR.APTRA.NDC.CashAcceptService.ECB6CashAcceptServiceCustomized" Assembly="NCR.APTRA.NDC.CashAcceptService.dll">
+      <Interface>
+        <Property Name="CaptureSerialNumberImage" Value="true" />
+        <Property Name="SerialNumberImageFilePath" Value="C:\Program Files\NCR APTRA\Advance NDC\PersistedData\SerialNumberImageFiles" />
+        <Property Name="CatMode" Value="0" />
+        <Property Name="RetractConfiguration" Value="RetractToStackerConfig" />
+        <Property Name="OfferServiceWhenNotesLeftAtExitSlot" Value="true" />
+        <Property Name="HandleExplicitShutterControlJournaling" Value="false" />
+        <Property Name="RecordCat4Signatures" Value="false" />
+        <Property Name="ModifyRetractDestination" Value="true" />
+        <Property Name="UseRetractBinAsCashinBin" Value="false" />
+      </Interface>
+    </Class>
+    <Class ID="RetractToStackerConfig" Name="NCR.APTRA.CashAcceptService.StdRetractConfiguration" Assembly="NCR.APTRA.CashAcceptService.dll">
+      <Interface>
+        <Property Name="CounterName" Value="RetractCount" />
+      </Interface>
+    </Class>
+    <Class ID="CashInXFSReceiptSrv" Name="NCR.APTRA.RcptSrv.XFSReceiptService" Assembly="NCR.APTRA.RcptSrv.dll">
+      <Interface>
+        <Property Name="Language" Value="en" />
+        <Property Name="Media" Value="Receipt1" />
+        <Property Name="Translator" Value="DataTranslator" IsLink="true" />
+      </Interface>
+    </Class>
+    <Class ID="AutoRecoveryFlow" Name="NCR.APTRA.NDC.CashInErrorRecovery.AutoRecoveryFlow" Assembly="NCR.APTRA.NDC.CashInErrorRecovery.dll">
+      <Interface>
+        <Property Name="RecoveryMode" Value="FullRecovery" />
+        <Property Name="RecoveryDestination" Value="Retract" />
+      </Interface>
+    </Class>
+    <Class ID="CashInStartOfDayRecoveryFlow" Name="NCR.APTRA.NDC.CashInErrorRecovery.AutoRecoveryFlow" Assembly="NCR.APTRA.NDC.CashInErrorRecovery.dll">
+      <Interface>
+        <Property Name="RecoveryMode" Value="FullRecovery" />
+        <Property Name="RecoveryDestination" Value="Retract" />
+      </Interface>
+    </Class>
+    <Class ID="InitBNAFlow" Name="NCR.APTRA.NDC.CashInErrorRecovery.SupervisorRecoveryFlow" Assembly="NCR.APTRA.NDC.CashInErrorRecovery.dll">
+      <Interface>
+        <Property Name="RecoveryDestination" Value="Retract" />
+      </Interface>
+    </Class>
+    <Class ID="CashInExitSupervisorFlow" Name="NCR.APTRA.NDC.CashInErrorRecovery.SupervisorRecoveryFlow" Assembly="NCR.APTRA.NDC.CashInErrorRecovery.dll">
+      <Interface>
+        <Property Name="RecoveryDestination" Value="Retract" />
+      </Interface>
+    </Class>
+    <Class ID="CreateSignatures" Name="NCR.APTRA.ECB6SupervisorTasks.CreateSignatures" Assembly="NCR.APTRA.ECB6SupervisorTasks.dll">
+      <Interface>
+        <Property Name="CreateSignaturesPath" Value="C:\Program Files\NCR APTRA\Advance NDC\Data\Signatures" />
+        <Property Name="HandlingValidation" Value="Default" />
+      </Interface>
+    </Class>
+    <Class ID="ExtractSignatures" Name="NCR.APTRA.ECB6SupervisorTasks.ExtractSignatures" Assembly="NCR.APTRA.ECB6SupervisorTasks.dll">
+      <Interface>
+        <Property Name="ExtractSignsOutputPath" Value="C:\Program Files\NCR APTRA\Advance NDC\Data\Signatures" />
+        <Property Name="CompressToCab" Value="true" />
+        <Property Name="OutputFilename" Value="ECBExt.xml" />
+      </Interface>
+    </Class>
+    <Class ID="PrintCashInExceptionReport" Name="NCR.APTRA.NDC.CashInExceptionReportTasks.PrintCashInExceptionReport" Assembly="NCR.APTRA.NDC.CashInExceptionReportTasks.dll">
+      <Interface>
+        <Property Name="CountersFormatter" Value="BasicCashInFormatter" IsLink="true" />
+      </Interface>
+    </Class>
+    <Class ID="PrintExceptionReport" Name="NCR.APTRA.NDC.CashInExceptionReportTasks.PrintCashInExceptionReport" Assembly="NCR.APTRA.NDC.CashInExceptionReportTasks.dll">
+      <Interface>
+        <Property Name="CountersFormatter" Value="BasicCashInFormatter" IsLink="true" />
+      </Interface>
+    </Class>
+    <Class ID="PrintBNATotals" Name="NCR.APTRA.NDC.CashInSupervisorTasks.PrintCashInTotals" Assembly="NCR.APTRA.NDC.CashInSupervisorTasks.dll">
+      <Interface>
+        <Property Name="CountersFormatter" Value="EnhancedCashInFormatter" IsLink="true" />
+        <Property Name="ConfigureCountsToBePrinted" Value="CountsConfigurationArray" IsArray="true" />
+        <Property Name="ReportZeroCounts" Value="False" />
+      </Interface>
+    </Class>
+    <Class ID="CashInSupCntrsConfig" Name="NCR.APTRA.NDC.CashInSupervisorTasks.CashInSupCntrsConfig" Assembly="NCR.APTRA.NDC.CashInSupervisorTasks.dll">
+      <Interface>
+        <Property Name="MaxRowsPerPage" Value="8" />
+        <Property Name="NoCountsPerCassetteString" Value="NO COUNTS FOR THESE CASSETTES" />
+        <Property Name="NoAmountsPerCassetteString" Value="NO AMOUNTS FOR THESE CASSETTES" />
+        <Property Name="NoCountsPerCurrencyString" Value="NO AMOUNTS PER CURRENCY" />
+        <Property Name="NoCountsPerDenomString" Value="NO AMOUNTS PER DENOMINATIONS" />
+        <Property Name="UnknownDenomString" Value="UNKNOWN" />
+      </Interface>
+    </Class>
+    <Class ID="NDCConfigureGBRU" Name="NCR.APTRA.NDCConfigureGBRUTask.NDCConfigureGBRU" Assembly="NCR.APTRA.NDCConfigureGBRUTask.dll">
+      <Interface>
+        <Property Name="DisplayConfigurations" Value="False" />
+      </Interface>
+    </Class>
+    <Array ID="CashInJournalRecordMapping">
+      <Element Value="CAS_CASH_IN_START_OK=j4018" />
+      <Element Value="CAS_SHUTTER_OPEN=j4019" />
+      <Element Value="CAS_NOTES_INSERTED=j4020" />
+      <Element Value="CAS_MONEY_REJECTED=j4021" />
+      <Element Value="CAS_NOTES_PRESENTED=j4022" />
+      <Element Value="CAS_NOTES_TAKEN=j4023" />
+      <Element Value="CAS_CASH_IN_END_OK=j4024" />
+      <Element Value="CAS_ROLLBACK_OK=j4035" />
+      <Element Value="CashInOfflineEncashStart=j4055" />
+      <Element Value="CashInOfflineRefundStart=j4056" />
+      <Element Value="CashInOfflineEncashSuccess=j4057" />
+      <Element Value="CashInOfflineEncashFailed=j4058" />
+      <Element Value="CashInOfflineRefundSuccess=j4059" />
+      <Element Value="CashInOfflineRefundFailed=j4060" />
+      <Element Value="CashInOfflineRefundTimeout=j4061" />
+      <Element Value="ValidatedNoteCounts=U0183" />
+      <Element Value="NoValidatedNoteCounts=U0184" />
+      <Element Value="CashInEscrowFull=t19" />
+      <Element Value="CashInNoteError=t20" />
+      <Element Value="CashInNoteConfigurationFailed=t34" />
+      <Element Value="CashInRecoveryStarted=U0115" />
+      <Element Value="CashInCountsInaccurate=U0116" />
+      <Element Value="CashInResetOk=U0117" />
+      <Element Value="CashInResetFailed=U0118" />
+      <Element Value="CashInSerialNumbers=U0119" />
+      <Element Value="CashInSerialNumberReadFailures=U0120" />
+      <Element Value="CAT4SerialNumberReadFailures=U0177" />
+      <Element Value="CAT3SerialNumberReadFailures=U0176" />
+      <Element Value="CAT2SerialNumberReadFailures=U0175" />
+      <Element Value="CashInCassetteReconfigurationStarted=U0121" />
+      <Element Value="CashInCassetteReconfigurationComplete=U0122" />
+      <Element Value="CashInCassetteReconfigurationError=U0123" />
+      <Element Value="CashInCat2FailedSignatures=U0124" />
+      <Element Value="CashInCat3FailedSignatures=U0125" />
+      <Element Value="CashInCat4FailedSignatures=U0189" />
+      <Element Value="CashInMisrecognitionError=U0126" />
+      <Element Value="CashInDeviceStatus=U0127" />
+      <Element Value="CashInAddMoreSelected=U0128" />
+      <Element Value="CashInCloseStateRefund=U0129" />
+      <Element Value="CashInCloseStateEncash=U0130" />
+      <Element Value="CashInCloseStateLeaveNotesInEscrow=U0131" />
+      <Element Value="CashInRetractHeader=U0133" />
+      <Element Value="CashInCounts=U0134" />
+      <Element Value="CashInNotesAtExit=U0135" />
+      <Element Value="CashInInitBNAStart=U0136" />
+      <Element Value="CashInCustomerMoney=U0137" />
+      <Element Value="CashInAuthorisedMoney=U0138" />
+      <Element Value="CashInRetractBinRemoved=U0139" />
+      <Element Value="CashInClearingSuspend=U0140" />
+      <Element Value="CashInCounterfeitNotesPresent=U0141" />
+      <Element Value="CashInSuspectNotesPresent=U0142" />
+      <Element Value="CashInCassetteInserted=U0143" />
+      <Element Value="CashInCassetteRemoved=U0144" />
+      <Element Value="SensorsStatus=U0145" />
+      <Element Value="CashInOfflineAuthorisedMoney=U0146" />
+      <Element Value="CashInExcessOfNotes=U0152" />
+      <Element Value="CashInECB6ScreenContinue=U0153" />
+      <Element Value="CashInECB6ScreenCancel=U0154" />
+      <Element Value="CashInDepositSelected=U0155" />
+      <Element Value="CashInRefundSelected=U0156" />
+      <Element Value="CashInConfirmationScreenTimeout=U0157" />
+      <Element Value="CashInECB6ScreenTimeout=U0158" />
+      <Element Value="CashInNoteInsertionTimeout=U0159" />
+      <Element Value="CAS_CASHINEND_FAILURE=U0160" />
+      <Element Value="CAS_ROLLBACK_FAILURE=U0161" />
+      <Element Value="CashInNoItemsToDeposit=U0162" />
+      <Element Value="CashInNoItemsToRefund=U0163" />
+      <Element Value="CashInNoteInsertionCancelled=U0164" />
+      <Element Value="CashInNoteInsertionTimeoutCancelled=U0165" />
+      <Element Value="CashInAddMoreNotEnabled=U0166" />
+      <Element Value="RejectedBunchEntryLimitReached=U0167" />
+      <Element Value="OfflineDeposit=U0168" />
+      <Element Value="OfflineRefundSuccess=U0169" />
+      <Element Value="OfflineRefundFailed=U0170" />
+      <Element Value="CashInNotesAtStacker=U0171" />
+      <Element Value="CAS_CALL_RETRACT=U0172" />
+      <Element Value="CashInBunchPresented=U0173" />
+      <Element Value="CashInBunchTaken=U0174" />
+      <Element Value="CashDispenserOperationType=U0178" />
+      <Element Value="CashInAutoErrorRecoverySuccessful=U0182" />
+      <Element Value="CashInDeviceStatusDuringDispense=U0127" />
+      <Element Value="CAS_CALL_RESET=U0185" />
+      <Element Value="CashInDeviceStatusDuringDispense=U0186" />
+    </Array>
+    <Array ID="CountsConfigurationArray">
+      <Element Value="DepositCounts" />
+      <Element Value="RejectedDuringDepositCounts" />
+      <Element Value="RetractCounts" />
+      <Element Value="TotalDeposit" />
+      <Element Value="TotalRejectedDuringDeposit" />
+      <Element Value="TotalRetract" />
+      <Element Value="TotalEscrow" />
+      <Element Value="TotalRefund" />
+      <Element Value="TotalReject" />
+    </Array>
+    <Array ID="CurrencyNamesMapping">
+      <Element Value="USD=USD" />
+    </Array>
+    <Array ID="DenominationNamesMapping" />
+    <Array ID="CashInJrnlTCodes">
+      <Element Value="0=OPERATION OK" />
+      <Element Value="1=CUSTOMER CANCEL" />
+      <Element Value="3=DEVICE ERROR" />
+      <Element Value="4=BILLS AT EXIT" />
+      <Element Value="5=ESCROW NO BILLS" />
+      <Element Value="6=BILLS AT POWERUP" />
+      <Element Value="7=BILLS RETRACTED" />
+      <Element Value="2=CASHIN CASSETTE FULL" />
+      <Element Value="9=CASHIN NOTES ENCASH FAILED" />
+      <Element Value="A=CASHIN NOTES REFUND FAILED" />
+      <Element Value="B=CASHIN NOTES ENCASH FAILED-CASSETTE FULL" />
+      <Element Value="C=CASHIN CASSETTE FULL-NOTES JAMMED" />
+      <Element Value="D=BILLS RETRACTED" />
+    </Array>
+    <Array ID="MoneyRejectReasons">
+      <Element Value="CashUnitFull=CASH UNIT FULL" />
+      <Element Value="InvalidMedia=INVALID MEDIA" />
+      <Element Value="NoItems=NO ITEMS" />
+      <Element Value="DepositFailure=DEPOSIT FAILURE" />
+      <Element Value="ComponentFailure=COMPONENT FAILURE" />
+      <Element Value="EscrowFull=ESCROW FULL" />
+      <Element Value="ForeignItemsDetected=FOREIGN ITEMS DETECTED" />
+      <Element Value="BunchInvalid=BUNCH INVALID" />
+      <Element Value="CounterfeitItemsDetected=COUNTERFEIT ITEMS DETECTED" />
+      <Element Value="Jam=JAM" />
+      <Element Value="HardwareError=HARDWARE ERROR" />
+      <Element Value="LimitOverTotalItems=LIMIT OVER TOTAL ITEMS EXCEEDED" />
+      <Element Value="LimitOverAmount=LIMIT OVER AMOUNT EXCEEDED" />
+    </Array>
+    <Array ID="RecoveryDestinationsArray">
+      <Element Value="RETRACT BIN" />
+      <Element Value="CASSETTES" />
+    </Array>
+    <Array ID="RetainDestinationsArray">
+      <Element Value="CASSETTES" />
+      <Element Value="RETRACT BIN" />
+    </Array>
+    <Array ID="RecoveryFailedReasonsArray">
+      <Element Value="Success=NO ERROR" />
+      <Element Value="Jammed=DEVICE JAMMED" />
+      <Element Value="RetractMissing=RETRACT BIN MISSING" />
+      <Element Value="CassettesMissing=CASSETTES REMOVED" />
+      <Element Value="CassettesFull=CASSETTES FULL" />
+      <Element Value="CashOutError=CASH OUT ERROR" />
+      <Element Value="HardwareError=HARDWARE ERROR" />
+      <Element Value="DeviceOffline=DEVICE OFFLINE" />
+      <Element Value="StartEndExchangeFailed=EXCHANGE FAILED" />
+    </Array>
+    <Array ID="NoteErrorReasonsArray">
+      <Element Value="0=DOUBLE NOTES HAVE BEEN DETECTED" />
+      <Element Value="1=LONG NOTES HAVE BEEN DETECTED" />
+      <Element Value="2=SKEWED NOTE HAS BEEN DETECTED" />
+      <Element Value="3=ITEM COUNTING ERROR HAS OCCURRED" />
+      <Element Value="4=NOTES HAVE BEEN DETECTED AS TOO CLOSE" />
+      <Element Value="Unknown=UNKNOWN ERROR" />
+    </Array>
+    <Array ID="NoteConfigFailedReasonsArray">
+      <Element Value="000=EXCHANGE MODE" />
+      <Element Value="100=TIME OUT" />
+      <Element Value="101=HARDWARE ERROR" />
+      <Element Value="102=DEVICE LOCKED" />
+      <Element Value="103=UNSUPPORTED METHOD" />
+      <Element Value="104=CANCELLED" />
+      <Element Value="105=UNSUPPORTED CATEGORY" />
+      <Element Value="106=CONNECTION LOST" />
+      <Element Value="107=DEVICE NOT READY" />
+      <Element Value="108=UNSUPPORTED DATA" />
+      <Element Value="109=EXCEPTION OCCURRED" />
+      <Element Value="110=INVALID DATA" />
+      <Element Value="111=USER ERROR" />
+      <Element Value="999=SOFTWARE ERROR" />
+      <Element Value="Unknown=UNKNOWN ERROR" />
+    </Array>
+    <Array ID="CassetteNamesArray">
+      <Element Value="Cassette1=CASSETTE 1" />
+      <Element Value="Cassette2=CASSETTE 2" />
+      <Element Value="Cassette3=CASSETTE 3" />
+      <Element Value="Cassette4=CASSETTE 4" />
+      <Element Value="Cassette5=CASSETTE 5" />
+      <Element Value="Cassette6=CASSETTE 6" />
+      <Element Value="Cassette7=CASSETTE 7" />
+      <Element Value="Cassette8=CASSETTE 8" />
+      <Element Value="Cassette9=CASSETTE 9" />
+      <Element Value="Cassette10=CASSETTE 10" />
+      <Element Value="Retract=RETRACT BIN" />
+      <Element Value="Retract1=RETRACT BIN 1" />
+      <Element Value="Retract2=RETRACT BIN 2" />
+      <Element Value="Reject=REJECT BIN" />
+      <Element Value="Counterfeit=COUNTERFEIT BIN" />
+      <Element Value="UnknownCassette=UNKNOWN CASSETTE" />
+    </Array>
+    <Array ID="SupCntrsCassetteNamesArray">
+      <Element Value="Cassette1=ABOX" />
+      <Element Value="Cassette2=CASS2" />
+      <Element Value="Cassette3=CASS3" />
+      <Element Value="Cassette4=CASS4" />
+      <Element Value="Cassette5=CASS5" />
+      <Element Value="Cassette6=CASS6" />
+      <Element Value="Cassette7=CASS7" />
+      <Element Value="Cassette8=CASS8" />
+      <Element Value="Cassette9=CASS9" />
+      <Element Value="Cassette10=CASS10" />
+      <Element Value="Retract=RETRACT" />
+      <Element Value="Retract2=RETRACT2" />
+      <Element Value="Reject=REJECT" />
+      <Element Value="Counterfeit=CNTRFEIT" />
+    </Array>
+    <Array ID="RetractAreasArray">
+      <Element Value="CIM_TO_RETRACT=RETRACT BIN" />
+      <Element Value="CIM_TO_STACKER=STACKER" />
+      <Element Value="CIM_TO_CASSETTE=CASSETTES" />
+      <Element Value="CIM_TO_TRANSPORT=TRANSPORT" />
+    </Array>
+    <Array ID="ConfirmationScreenDataFormatters">
+      <Element Value="DefaultConfirmationScreenDataFormatter" />
+    </Array>
+    <Array ID="ECB6ScreenDataFormatters">
+      <Element Value="DefaultECB6ScreenDataFormatter" />
+    </Array>
+    <Array ID="CashInCassetteReconfigurePriorityArray">
+      <Element Value="CI1" />
+      <Element Value="CI2" />
+      <Element Value="CI3" />
+      <Element Value="CI4" />
+    </Array>
+    <Array ID="CassetteFixedMappings">
+      <Element Value="CI1=1" />
+      <Element Value="CI2=2" />
+      <Element Value="RC3=3" />
+      <Element Value="RC4=4" />
+    </Array>
+    <Array ID="BRMCassetteFixedMappings">
+      <Element Value="CI0=1" />
+      <Element Value="RC1=2" />
+      <Element Value="RC2=3" />
+      <Element Value="RC3=4" />
+      <Element Value="RC4=5" />
+    </Array>
+    <Array ID="SRCassetteFixedMappings">
+      <Element Value="CI0=1" />
+      <Element Value="RC1=2" />
+      <Element Value="RC2=3" />
+      <Element Value="RC3=4" />
+      <Element Value="RC4=5" />
+    </Array>
+    <Array ID="LogicalCassetteType">
+      <Element Value="Cassette1=1" />
+      <Element Value="Cassette2=2" />
+      <Element Value="Cassette3=3" />
+      <Element Value="Cassette4=4" />
+    </Array>
+    <Array ID="OfflineStates">
+      <Element Value="Do Not Touch" />
+      <Element Value="z014" />
+    </Array>
+    <Array ID="CurrencyCodeMapping">
+      <Element Value="GBP=826" />
+      <Element Value="EUR=978" />
+      <Element Value="USD=840" />
+      <Element Value="GEM=276" />
+      <Element Value="INR=356" />
+    </Array>
+    <SharedProperties>
+      <SharedProperty Name="EnableExceptionReporting" Value="false" />
+    </SharedProperties>
+  </Section>
+</ClassConfiguratorConfig>

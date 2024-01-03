@@ -1,0 +1,15 @@
+python --version
+
+python -c "import tkinter"
+
+pip install tk
+
+Firstly you have to install virtual env for deployment:
+
+pip install virtualenv
+
+dir>python -m virtualenv venv
+
+pip install pyinstaller
+
+pyinstaller --onefile your_script_name.py

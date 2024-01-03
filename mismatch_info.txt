@@ -1,0 +1,16 @@
+Mismatch at line 24 in NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023.xml and NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023(1).xml:
+    	<CassetteConfiguration Device="Dispenser" Type="1" Details="100(1-Cassette)"/>
+!=  	<CassetteConfiguration Device="Dispenser" Type="1" Details="400(1-Cassette)"/>
+
+Mismatch at line 25 in NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023.xml and NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023(1).xml:
+    	<CassetteConfiguration Device="Dispenser" Type="2" Details="200(1-Cassette)"/>
+!=  	<CassetteConfiguration Device="Dispenser" Type="2" Details="400(1-Cassette)"/>
+
+Mismatch at line 37 in NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023.xml and NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023(1).xml:
+    		<Option Id="1" Name ="Estoril_Core_BIOS_Upgrade" Version="" Path ="Resources\Bios_Upgrade" Enable ="Y">
+!=  		<Option Id="1" Name ="Estoril_Core_BIOS_Upgrade" Version="" Path ="Resources\Bios_Upgrade" Enable ="N">
+
+Mismatch at line 38 in NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023.xml and NCR_SR_UPDATE_IUI_11.00_VER_01.00_17052023(1).xml:
+    			<Command SequenceId="1" CommandString="C:\Temp\Resources\Bios_Upgrade\Bios_upgrade.vbs" RebootRequired="N" Enable="Y"/>
+!=  			<Command SequenceId="1" CommandString="C:\Temp\Resources\Bios_Upgrade\Bios_upgrade.vbs" RebootRequired="N" Enable="N"/>
+

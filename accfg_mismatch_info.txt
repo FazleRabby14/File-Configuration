@@ -1,0 +1,8 @@
+Mismatch at line 15 in CashInCustom.accfg and CashInCustom1.accfg:
+            <Property Name="JournalGroupDigit" Value="false" />
+!=          <Property Name="JournalGroupDigit" Value="true" />
+
+Mismatch at line 21 in CashInCustom.accfg and CashInCustom1.accfg:
+            <Property Name="DenominationNames" Value="DenominationNamesMapping" IsArray="true" />
+!=          <Property Name="DenominationNames" Value="DenominationNamesMapping" IsArray="false" />
+
